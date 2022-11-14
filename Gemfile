@@ -69,10 +69,8 @@ group :development do
   # gem "spring"
 end
 
-
 gem 'factory_bot_rails'
 
 gem 'faker'
 
-
-gem "devise", github: "heartcombo/devise", branch: "main"
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
