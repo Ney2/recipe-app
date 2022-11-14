@@ -3,10 +3,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    # show only recipes created by current_user
     @recipes = Recipe.where(user_id: current_user.id)
   end
 
+  def public_recipes
+    @recipes = Recipe.where(public: true)
+  end
   # GET /recipes/1 or /recipes/1.json
   def show; end
 
