@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
   def public_recipes
     @recipes = Recipe.where(public: true)
   end
+
   # GET /recipes/1 or /recipes/1.json
   def show; end
 
