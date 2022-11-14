@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_recipe, only: %i[show edit destroy]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    # show only recipes created by current_user
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -19,7 +20,8 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    # set user_id to current_user.id
+    @recipe = Recipe.new(recipe_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @recipe.save
@@ -27,19 +29,6 @@ class RecipesController < ApplicationController
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
@@ -64,6 +53,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :description, :public, :user_id)
+    params.require(:recipe).permit(:name, :preparation_time, :description, :public)
   end
 end
