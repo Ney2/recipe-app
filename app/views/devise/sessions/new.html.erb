@@ -1,6 +1,11 @@
 <h1><%= t('.sign_in') %></h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>

@@ -8,15 +8,14 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
-    devise_parameter_sanitizer.permit(:account_update, keys:  %i[name])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name])
   end
 
   def set_layout
-  if current_user
-    "application"
-  else
-    "auth"
+    if current_user
+      'application'
+    else
+      'auth'
+    end
   end
-end
-
 end
