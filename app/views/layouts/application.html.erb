@@ -5,22 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
   <body>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-  
-      <% if !user_signed_in? %>
-      <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
-      <% else %>
-      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
-      <% end %>
-  
+    <%= render "shared/navigation" %>
+              <%= render "shared/flash" %>
       <%= yield %>
   
     </div>
