@@ -27,7 +27,9 @@
       <td><%= recipe.preparation_time %> Minutes</td>
       <td><%= recipe.public %></td>
       <td> <%= link_to "Show", recipe %></td>
+       <% if can? :destroy, Recipe %>
       <td><%= button_to "Delete", recipe, method: :delete%></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

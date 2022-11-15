@@ -1,5 +1,3 @@
-<!-- <%= render @recipe %> -->
-
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <main>
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
@@ -27,6 +25,7 @@
 
       </div>
     </div>
+    <% if can? :read, Recipe %>
 
     <div class="row">
       <div class="col-md">
@@ -38,7 +37,6 @@
 
           <h2> <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "btn btn-primary my-5" %>
           </h2>
-
         </div>
       </div>
     </div>
@@ -74,5 +72,7 @@
           <% end %>
         </tbody>
       </table>
+      <% end %>
+
   </main>
 </div>
