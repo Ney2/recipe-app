@@ -8,6 +8,6 @@ class Ability
     return unless user.present?
 
     can %i[read create destroy], Food, user: user
-    can %i[read create destroy], Recipe, user: user
+    can %i[read create destroy], Recipe, user_id: user.id
   end
 end
