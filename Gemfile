@@ -76,3 +76,6 @@ gem 'faker'
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 gem 'devise-bootstrap-views', '~> 1.0'
+
+
+gem 'bullet'
