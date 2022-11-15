@@ -1,27 +1,37 @@
-<div class="flex justify-center text-center p-8">
-  <div class="w-[80%]">
-    <div class="text-right mb-8"><%= link_to "Add Food", new_food_path, class: "py-2 px-4 rounded-lg bg-green-300 hover:bg-green-200 hover:shadow-xl" %></div>
-<table class="table table-striped">
-      <thead>
-        <tr>
-          <th class="border border-slate-800 py-2">Food</th>
-          <th class="border border-slate-800">Quantity</th>
-          <th class="border border-slate-800 w-44">Measurement Unit</th>
-          <th class="border border-slate-800">Unit Price</th>
-          <th class="border border-slate-800">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |food| %>
-          <tr class="odd:bg-white even:bg-green-100">
-            <td class="border border-slate-300 py-2"><%= food.name %></td>
-            <td class="border border-slate-300"><%= food.quantity %></td>
-            <td class="border border-slate-300"><%= food.unit %></td>
-            <td class="border border-slate-300">$<%= food.price %></td>
-            <td class="border border-slate-300"><%= button_to "Delete", food_path(food.id), method: :delete, class: "bg-red-300 px-2 py-0 my-2 rounded-lg hover:bg-red-500 hover:text-white" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="d-flex justify-content-between">
+  <div>
+    <h1>Foods</h1>
+
+  </div>
+  <div>
+    <%= link_to "Add Food", new_food_path, class: "btn btn-info" %>
+
   </div>
 </div>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Measurement Unit</th>
+      <th class="col">Unit Price</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.quantity %></td>
+      <td><%= food.unit %></td>
+      <td>$<%= food.price %></td>
+      <td>
+        <%= button_to "Delete", food_path(food.id), method: :delete, class: "bg-red-300 px-2 py-0 my-2 rounded-lg hover:bg-red-500 hover:text-white" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
