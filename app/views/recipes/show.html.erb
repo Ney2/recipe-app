@@ -28,37 +28,51 @@
       </div>
     </div>
 
-      <div class="d-flex justify-content-between">
+    <div class="row">
+      <div class="col-md">
+        <div class="d-flex justify-content-between">
 
-    <div class="my-5">
-      <%= link_to "Add Food", new_food_path, class:"btn btn-primary btn-lg px-4" %>
-    </div>
+          <h2>
+            <%= link_to "Generate Shopping list", recipe_general_shopping_lists_path(@recipe.id), class:"btn btn-primary my-5" %>
+          </h2>
+
+          <h2> <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "btn btn-primary my-5" %>
+          </h2>
 
         </div>
+      </div>
+    </div>
 
-        <hr>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Food</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Value</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @recipe.recipe_foods.includes([:food]).each do |r| %>
-    <tr>
-      <th scope="row"><%= r.food.name %></th>
-      <td><%= r.quantity %></td>
-      <td><%= r.food.price * r.quantity %></td>
-      <td>
-        <%= button_to "Remove", recipe_recipe_food_path(@recipe.id, r.id), method: :delete, :class => "btn btn-danger" %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <div>
+
+
+
+      <hr>
+      <hr>
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Value</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipe.recipe_foods.includes([:food]).each do |r| %>
+          <tr>
+            <th scope="row"><%= r.food.name %></th>
+            <td><%= r.quantity %></td>
+            <td><%= r.food.price * r.quantity %></td>
+            <td>
+              <%= button_to "Remove", recipe_recipe_food_path(@recipe.id, r.id), method: :delete, :class => "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
   </main>
 </div>
