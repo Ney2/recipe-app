@@ -35,5 +35,30 @@
     </div>
 
         </div>
+
+        <hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @recipe.recipe_foods.includes([:food]).each do |r| %>
+    <tr>
+      <th scope="row"><%= r.food.name %></th>
+      <td><%= r.quantity %></td>
+      <td><%= r.food.price * r.quantity %></td>
+      <td>
+        <%= button_to "Remove", recipe_recipe_food_path(@recipe.id, r.id), method: :delete, :class => "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
   </main>
 </div>
