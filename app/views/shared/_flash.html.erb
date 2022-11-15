@@ -1,0 +1,20 @@
+<div>
+    <!-- if error show error -->
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <!-- if alert show alert -->
+    <% if flash[:alert] %>
+      <div class="alert alert-warning">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <!-- if notice show notice -->
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+</div>
