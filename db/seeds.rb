@@ -32,7 +32,7 @@ end
 end
 
 
-10.times do
+100.times do
   RecipeFood.create!(
     [{
       quantity: Faker::Number.number(digits: 2),
