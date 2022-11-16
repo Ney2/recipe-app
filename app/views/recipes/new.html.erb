@@ -1,0 +1,51 @@
+<%= form_with(model: @recipe) do |form| %>
+<% if @recipe.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+  <ul>
+    <% @recipe.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="container col-xl-10 col-xxl-8">
+  <div class="row align-items-center">
+
+    <div class="col-md-10 mx-auto">
+      <h1 class="py-5">New recipe</h1>
+
+      <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <div class="form-floating mb-3">
+          <%= form.text_field :name,class:"form-control", id:"floatingInput", placeholder:"Recipe Name" %>
+
+          <label for="floatingInput">Recipe Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= form.text_field :description,class:"form-control", id:"floatingInput", placeholder:"Description" %>
+          <label for="floatingInput">Description</label>
+
+
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= form.text_field :preparation_time, class:"form-control", id:"floatingInput", placeholder:"preparation Time" %>
+
+          <label for="floatingInput">Preparation Time</label>
+        </div>
+        <div class="checkbox mb-3">
+          <label>
+            <%= form.check_box :public %>
+            Public Recipe
+          </label>
+        </div>
+        <%= form.submit "Save", class:"w-100 btn btn-lg btn-primary" %>
+      </form>
+    </div>
+  </div>
+</div>
+<% end %>

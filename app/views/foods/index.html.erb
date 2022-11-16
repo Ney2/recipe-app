@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between">
+  <div>
+    <h1>Foods</h1>
+
+  </div>
+  <div>
+    <%= link_to "Add Food", new_food_path, class: "btn btn-info" %>
+
+  </div>
+</div>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Measurement Unit</th>
+      <th class="col">Unit Price</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.quantity %></td>
+      <td><%= food.unit %></td>
+      <td>$<%= food.price %></td>
+            <td> <%= link_to "Show", food %></td>
+
+      <td>
+        <%= button_to "Delete", food_path(food.id), method: :delete, class: "bg-red-300 px-2 py-0 my-2 rounded-lg hover:bg-red-500 hover:text-white" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
