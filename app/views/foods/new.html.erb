@@ -1,3 +1,49 @@
-<h1>New food</h1>
 
-<%= render "form", food: @food %>
+<%= form_with(model: @food) do |form| %>
+<% if @food.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(@food.errors.count, "error") %> prohibited this Food from being saved:</h2>
+
+  <ul>
+    <% @food.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="container col-xl-10 col-xxl-8">
+  <div class="row align-items-center">
+
+    <div class="col-md-10 mx-auto">
+      <h1 class="py-5">New Food</h1>
+
+      <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <div class="form-floating mb-3">
+          <%= form.text_field :name,class:"form-control", id:"floatingInput", placeholder:"Food Name" %>
+          <label for="floatingInput">Food Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= form.text_field :unit,class:"form-control", id:"floatingInput", placeholder:"Measuring Units" %>
+          <label for="floatingInput">Measuring Units</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= form.text_field :price, class:"form-control", id:"floatingInput", placeholder:"Price" %>
+
+          <label for="floatingInput">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+          <%= form.text_field :quantity, class:"form-control", id:"floatingInput", placeholder:"Quantity" %>
+
+          <label for="floatingInput">Quantity</label>
+        </div>
+
+        <%= form.submit "Save", class:"w-100 btn btn-lg btn-primary" %>
+      </form>
+    </div>
+  </div>
+</div>
+<% end %>
