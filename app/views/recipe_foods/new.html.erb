@@ -16,13 +16,13 @@
 
   <div class="mt-5">
     <%= form.label :recipe_id, style: "display: block" %>
-      <%=form.collection_select :recipe_id, Recipe.order(:created_at), :id, :name , class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3 px-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full" %>
+      <%=form.collection_select :recipe_id, Recipe.order(:created_at), :id, :name %>
 
   </div>
 
   <div class="mt-5">
     <%= form.label :food_id, style: "display: block" %>
-      <%=form.collection_select :food_id, Food.order(:created_at), :id, :name , class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3 px-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full" %>
+      <%=form.collection_select :food_id, Food.order(:created_at), :id, :name  %>
   </div>
   <div class="mt-5">
     <%= form.label :quantity, style: "display: block" %>

@@ -25,7 +25,6 @@
 
       </div>
     </div>
-    <% if can? :destroy, @recipe %>
 
     <div class="row">
       <div class="col-md">
@@ -34,15 +33,16 @@
           <h2>
             <%= link_to "Generate Shopping list", recipe_general_shopping_lists_path(@recipe.id), class:"btn btn-primary my-5" %>
           </h2>
+    <% if can? :destroy, Recipe %>
 
           <h2> <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "btn btn-primary my-5" %>
+               <% end %>
 
           </h2>
         </div>
       </div>
     </div>
 
-               <% end %>
 
     <div>
 
